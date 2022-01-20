@@ -1,3 +1,16 @@
+<?php
+require_once('config.php');
+function get_service(){
+  global $con;
+  $sql = "SELECT * FROM booking_service";
+  $result = $con->query($sql);
+  while ($row = $result->fetch_assoc()) {
+    $service = $row['service'];
+    echo "<option>$service</option>";
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,6 +32,8 @@
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
@@ -65,13 +80,175 @@
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="ml-auto">
-                            <a class="btn btn-custom" href="https://autocares.lk/Booking/index/1">Get Appointment</a>
+                            <!--<a class="btn btn-custom" href="https://autocares.lk/Booking/index/1">Get Appointment</a>-->
+                            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal">Get Appointment</button>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
         <!-- Nav Bar End -->
+
+         <!-- Modal start -->
+
+         
+      <style type="text/css">
+        .m-b-5{
+          margin-bottom: 5px;
+        }
+        .m-b-10{
+          margin-bottom: 10px;
+        }
+        .btn-dangerr {
+    color: #fff;
+    background-color: #636161;
+    border-color: #636161;
+    font-size: 18px;
+}
+.btn-dangerr:hover {
+    color: #fff;
+    background-color: #636161;
+    border-color: #636161;
+    font-size: 18px;
+}
+.btn-successs {
+    color: #fff;
+    background-color: #252f76;
+    border-color: #252f76;
+    font-size: 18px;
+}
+.btn-successs:hover {
+    color: #fff;
+    background-color: #252f76;
+    border-color: #252f76;
+    font-size: 18px;
+}
+      </style>
+
+      <!-- Modal -->
+      <div style="margin-top: 60px;" id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header" style="color:white;background-color: #0751aa;">
+            <div style="flex-direction:column;">
+              <h4 style="color:white;background-color: #0751aa;" class="text-center modal-title">Book A Service</h4>
+             
+            </div>
+            </div>
+
+            <div class="modal-body">
+              <div id="error">
+                
+              </div>
+              <form name="book_form" action="insert-booking.php" method="post" onsubmit="return validateForm()">
+                
+                <div class="m-b-10">
+                  <input class="form-control" type="text" name="owner_name" placeholder="Your Name">
+                </div>
+                <div class="m-b-10">
+                  <input class="form-control" type="text" name="vehicle_no" placeholder="Vehicle Number">
+                </div>
+
+                <div class="m-b-10">
+                  <input class="form-control" type="text" name="contact_no" placeholder="Mobile Number">
+                  <span id="mobile_error"></span>
+                </div>
+
+                <div class="m-b-10">
+                  <select class="form-control" name="service" id="main">
+                    <option value="" disabled selected>Select Service</option>
+                    <?php get_service(); ?>
+                  </select>
+                </div>
+
+               
+                                    
+                
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div>
+                      <label>Your Date:</label>
+                    </div>
+                    <div>
+                      <input class="form-control" type="date" name="book_date">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div>
+                      <label>Your Time:</label>
+                    </div>
+                    <div>
+                      <select class="form-control" name="book_time">
+                        <?php
+                          for ($x = 9; $x <= 19; $x++) {
+                            if ($x < 10) {
+                              echo "<option value=0".$x.":00:00>";
+                              echo "0".$x.":00";
+                              echo "</option>";
+
+                              echo "<option value=0".$x.":30:00>";
+                              echo "0".$x.":30";
+                              echo "</option>";
+                            }
+                            else{
+                              echo "<option value=".$x.":00:00>";
+                              echo $x.":00";
+                              echo "</option>";
+
+                              echo "<option value=".$x.":30:00>";
+                              echo $x.":30";
+                              echo "</option>";
+                            }
+                          }
+                        ?>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button style="border-radius: 0px; " type="button" class="btn btn-dangerr" data-dismiss="modal">Close</button>
+              <input type="submit" name="submit" style="border-radius: 0px;" class="btn btn-successs" value="Book Now">
+              
+            </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        function validateForm(){
+          var owner_name = document.forms["book_form"]["owner_name"].value;
+          var vehicle_no = document.forms["book_form"]["vehicle_no"].value;
+          var contact_no = document.forms["book_form"]["contact_no"].value;
+          var service = document.forms["book_form"]["service"].value;
+          var book_date = document.forms["book_form"]["book_date"].value;
+          var book_time = document.forms["book_form"]["book_time"].value;
+
+          if(owner_name == "" || vehicle_no == "" || contact_no == "" || book_date == "" || service == ""){
+            document.getElementById("error").innerHTML = "<div class='alert alert-danger'>Fill All Requirements!</div>";
+            return false;
+          }
+          else{
+            document.getElementById("error").innerHTML = "";
+            if(contact_no.length != 10){
+              document.getElementById("mobile_error").innerHTML = "<div class='text-danger'>Enter Valid Mobile</div>";
+              return false;
+            }
+            else{
+              document.getElementById("mobile_error").innerHTML = "";
+              return true;
+            }
+          }
+        }
+      </script>
+
+          <!-- Modal End -->
 
 
         
