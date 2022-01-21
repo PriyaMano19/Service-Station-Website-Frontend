@@ -1,14 +1,6 @@
 <?php
 require_once('config.php');
-function get_service(){
-  global $con;
-  $sql = "SELECT * FROM booking_service";
-  $result = $con->query($sql);
-  while ($row = $result->fetch_assoc()) {
-    $service = $row['service'];
-    echo "<option>$service</option>";
-  }
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -158,11 +150,44 @@ function get_service(){
 
                 <div class="m-b-10">
                   <select class="form-control" name="service" id="main">
-                    <option value="" disabled selected>Select Service</option>
-                    <?php get_service(); ?>
+                    <option value="" type ="checkbox" disabled selected>Select Service</option>
+                    <?php
+         $query = "SELECT * FROM booking_service";
+         $result=mysqli_query($con,$query);
+         while($row = mysqli_fetch_array($result)){
+           echo '<option value="'.$row['service_id'].'">'.$row['service'].'</option>';
+         }
+
+
+         ?>
+                  </select>
+                </div>
+                <div class="m-b-10">
+                  <select multiple class="form-control" name="service" id="sub">
+                    <option value=""  disabled selected>Select Sub Service</option>
+                  
                   </select>
                 </div>
 
+            <script>
+        $(document).ready(function(){
+      $("#main").change(function(){
+        var service_id = $(this).val();
+        $.ajax({
+          url:"ajax.php",
+          type:"POST",
+          cache:false,
+          data:{serviceid:service_id},
+          success:function(data){
+           // alert(data);
+           $("#sub").html(data);
+          }
+        });
+       
+       
+      }); 
+    });
+            </script>
                
                                     
                 
