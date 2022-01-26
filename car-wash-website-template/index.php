@@ -1,7 +1,6 @@
 <?php
 require_once('config.php');
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,14 +16,16 @@ require_once('config.php');
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.14/css/bootstrap-multiselect.css" integrity="sha512-EvvoSMXERW4Pe9LjDN9XDzHd66p8Z49gcrB7LCUplh0GcEHiV816gXGwIhir6PJiwl0ew8GFM2QaIg2TW02B9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.14/js/bootstrap-multiselect.js" integrity="sha512-CoQowxKxumTPPSTrsNoJ0VU1Sd6QFUXvEX/CLD2h2/peHOLb5IfkLT1cK/DeACOe5ixA4zgJzcX5g59TnEkV8w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 
         <!-- Template Stylesheet -->
@@ -134,7 +135,7 @@ require_once('config.php');
               <div id="error">
                 
               </div>
-              <form name="book_form" action="insert-booking.php" method="post" onsubmit="return validateForm()">
+              <form name="book_form" action="insert-booking.php" method="post" onsubmit="return validateForm()" id="form_select">
                 
                 <div class="m-b-10">
                   <input class="form-control" type="text" name="owner_name" placeholder="Your Name">
@@ -152,19 +153,19 @@ require_once('config.php');
                   <select class="form-control" name="service" id="main">
                     <option value="" type ="checkbox" disabled selected>Select Service</option>
                     <?php
-         $query = "SELECT * FROM booking_service";
-         $result=mysqli_query($con,$query);
-         while($row = mysqli_fetch_array($result)){
-           echo '<option value="'.$row['service_id'].'">'.$row['service'].'</option>';
-         }
+                        $query = "SELECT * FROM booking_service";
+                        $result=mysqli_query($con,$query);
+                        while($row = mysqli_fetch_array($result)){
+                        echo '<option value="'.$row['service_id'].'">'.$row['service'].'</option>';
+                        }
 
 
-         ?>
+                        ?>
                   </select>
                 </div>
                 <div class="m-b-10">
-                  <select multiple class="form-control" name="service" id="sub">
-                    <option value=""  disabled selected>Select Sub Service</option>
+                  <label type="checkbox"  id="sub" ></label>
+                   
                   
                   </select>
                 </div>
@@ -187,8 +188,11 @@ require_once('config.php');
        
       }); 
     });
+
+ 
             </script>
-               
+
+         
                                     
                 
 
@@ -722,5 +726,33 @@ require_once('config.php');
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#sub').multiselect({
+                    nonSelectedText :'select sub services',
+                    enableFiltering:true,
+                    enableCaseInsensitiveFiltering:true,
+                    buttonWidth:'400px'
+                });
+
+                $('#form_select').on('submit', function(event){
+  event.preventDefault();
+  var form_data = $(this).serialize();
+  $.ajax({
+   url:"insert-booking.php",
+   method:"POST",
+   data:form_data,
+   success:function(data)
+   {
+    $('#sub option:selected').each(function(){
+     $(this).prop('selected', false);
+    });
+    $('#sub').multiselect('refresh');
+    alert(data);
+   }
+  });
+ });
+            });
+        </script>
     </body>
 </html>
