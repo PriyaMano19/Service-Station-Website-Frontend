@@ -15,9 +15,7 @@ if(isset($_POST['serviceid'])) {
               echo '<br>';
               echo'<label   name="sub_service[]" class="defaultCheckbox" value="'.$row['sub_service_id'].'">'.$row['sub_description'].'</label>';
               echo '<br>';
-            //echo '<div><input type="checkbox" name="checked[]" value="'.$row['sub_service_id'].'">'.$row['sub_service_name'].'</div>';
-         
-          // echo '<label><input type="checkbox" value="'.$row['sub_service_id'].'">'.$row['sub_service_name'].'</label>';
+          
         }
     }
 

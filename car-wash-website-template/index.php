@@ -164,7 +164,7 @@ require_once('config.php');
                   </select>
                 </div>
                 <div class="m-b-10">
-                  <label type="checkbox"  id="sub" ></label>
+                  <label type="checkbox" name="subservice" id="sub" ></label>
                    
                   
                   </select>
@@ -256,10 +256,11 @@ require_once('config.php');
           var vehicle_no = document.forms["book_form"]["vehicle_no"].value;
           var contact_no = document.forms["book_form"]["contact_no"].value;
           var service = document.forms["book_form"]["service"].value;
+          var sub_service = document.forms["book_form"]["subservice"].value;
           var book_date = document.forms["book_form"]["book_date"].value;
           var book_time = document.forms["book_form"]["book_time"].value;
 
-          if(owner_name == "" || vehicle_no == "" || contact_no == "" || book_date == "" || service == ""){
+          if(owner_name == "" || vehicle_no == "" || contact_no == "" || book_date == "" || service == "" || sub_service =="" ){
             document.getElementById("error").innerHTML = "<div class='alert alert-danger'>Fill All Requirements!</div>";
             return false;
           }
