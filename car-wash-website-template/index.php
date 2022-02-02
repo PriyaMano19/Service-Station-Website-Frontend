@@ -39,7 +39,7 @@ require_once('config.php');
                 <div class="row align-items-center">
                     <div class="col-lg-8 col-md-12">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index.php">
                                <h1>R.S <span>Auto </span>Solution</h1> 
                               
                                 <!--<img class= "logoimage"src="img/logo1.jpeg" alt="Logo"> -->
@@ -66,7 +66,7 @@ require_once('config.php');
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="index.php" class="nav-item nav-link">Home</a>
                             <a href="#about-nav" class="nav-item nav-link">About</a>
                             <a href="#service-nav" class="nav-item nav-link">Service</a>
                             <a href="gallery.html" class="nav-item nav-link active">Gallery</a>
@@ -663,7 +663,7 @@ require_once('config.php');
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-link">
                             <h2>Popular Links</h2>
-                            <a href="index.html">Home</a>
+                            <a href="index.php">Home</a>
                             <a href="about.html">About Us</a>
                             <a href="contact.html">Contact Us</a>
                             <a href="service.html">Our Service</a>
