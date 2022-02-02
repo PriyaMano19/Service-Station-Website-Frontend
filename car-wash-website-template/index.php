@@ -343,9 +343,9 @@ require_once('config.php');
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="section-header text-left">
+                        <div class="section-header ">
                             <p>About Us</p>
-                            <h2>car washing and detailing</h2>
+                            <h2>car washing & detailing</h2>
                         </div>
                         <div class="about-content">
                             <p>
