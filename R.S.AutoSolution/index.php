@@ -15,21 +15,26 @@ require_once('config.php');
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Font -->
-       
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+        
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.14/css/bootstrap-multiselect.css" integrity="sha512-EvvoSMXERW4Pe9LjDN9XDzHd66p8Z49gcrB7LCUplh0GcEHiV816gXGwIhir6PJiwl0ew8GFM2QaIg2TW02B9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.14/js/bootstrap-multiselect.js" integrity="sha512-CoQowxKxumTPPSTrsNoJ0VU1Sd6QFUXvEX/CLD2h2/peHOLb5IfkLT1cK/DeACOe5ixA4zgJzcX5g59TnEkV8w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <link href="css/gallery.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css"/>
+       
+        
+        
     </head>
 
     <body>
@@ -37,22 +42,18 @@ require_once('config.php');
         <div class="top-bar">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-4 col-md-12">
                         <div class="logo">
-                            <a href="index.php">
-                               <h1>R.S <span>Auto </span>Solution</h1> 
-                              
-                                <!--<img class= "logoimage"src="img/logo1.jpeg" alt="Logo"> -->
+                            <a href="index.html">
+                                <h1>R.S  <span>Auto </span>Solution </h1> 
+                                <!-- <img src="img/logo.jpg" alt="Logo"> -->
                             </a>
-                            
                         </div>
                     </div>
-                   
+                    
                 </div>
             </div>
         </div>
-        
-        
         <!-- Top Bar End -->
 
         <!-- Nav Bar Start -->
@@ -67,19 +68,19 @@ require_once('config.php');
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
                             <a href="index.php" class="nav-item nav-link">Home</a>
-                            <a href="#about-nav" class="nav-item nav-link">About</a>
-                            <a href="#service-nav" class="nav-item nav-link">Service</a>
+                            <a href="about.html" class="nav-item nav-link">About</a>
+                            <a href="service.html" class="nav-item nav-link">Service</a>
                             <a href="gallery.html" class="nav-item nav-link active">Gallery</a>
                             <a href="contact.html" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="ml-auto">
-                            <!--<a class="btn btn-custom" href="https://autocares.lk/Booking/index/1">Get Appointment</a>-->
-                            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal">Get Appointment</button>
+                            <a class="btn btn-custom" href="https://autocares.lk/Booking/index/1">Get Appointment</a>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
+        <!-- Nav Bar End -->
         <!-- Nav Bar End -->
 
          <!-- Modal start -->
