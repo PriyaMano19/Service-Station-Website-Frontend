@@ -15,7 +15,7 @@ require_once('config.php');
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+       
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>  
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -37,10 +37,10 @@ require_once('config.php');
         <div class="top-bar">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-8 col-md-12">
                         <div class="logo">
                             <a href="index.html">
-                               <h1>R.S  <span> Auto </span> Solution </h1> 
+                               <h1>R.S <span>Auto </span>Solution</h1> 
                               
                                 <!--<img class= "logoimage"src="img/logo1.jpeg" alt="Logo"> -->
                             </a>

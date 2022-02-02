@@ -1,12 +1,13 @@
 /*******************************/
 /********* General CSS *********/
 /*******************************/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+
 body {
     color: #444444;
     font-weight: 400;
     background: #ffffff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Barlow', sans-serif;
 }
 
 h1,
@@ -712,6 +713,7 @@ a:focus {
 
 .about .about-img img {
     width: 100%;
+   
     border-radius: 5px;
     margin-bottom: 30px;
 }
